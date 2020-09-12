@@ -1,0 +1,8 @@
+{
+  "name": "second-app",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

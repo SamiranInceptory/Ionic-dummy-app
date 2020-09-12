@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ isLogin ? 'Login' : 'SignUp'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input type="email" 
+            ngModel 
+            name="email" 
+            required 
+            email
+            #emailCtrl="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="emailCtrl.touched && !emailCtrl.valid" lines="none">
+            <ion-label>
+              Must be a Valid Email
+            </ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Password</ion-label>
+            <ion-input type="password"
+            ngModel 
+            name="password" 
+            required
+            minlength="6"
+            #passCtrl="ngModel"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="passCtrl.touched && !passCtrl.valid" lines="none">
+            <ion-label>
+              Should be 6 charecters long
+            </ion-label>
+          </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-sm="6" offset-sm="3">
+        <ion-button 
+        type="button" 
+        expand="full" 
+        fill="outline" 
+        expand="block"
+        (click)="onSwitch()">Switch to {{ isLogin ? 'Sign-Up' : 'Login'}}</ion-button>
+        <ion-button [disabled]="!f.valid" type="submit" color="primary" expand="block">{{ isLogin? 'Login' : 'SignUp'}}</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+</ion-content>
